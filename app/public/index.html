@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Book List</title>
+  </head>
+  <header>
+    <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" href="index.html">User Info</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="table.html">Book List</a>
+  </li>
+</ul>
+  </header>
+  <body>
+    <div="container">
+
+    <h1>Book List</h1>
+
+    <form action="addbook.html" method="get" class="generate-invoice" id="gen-inv-form">
+            <table id="taskTable" class="generate-invoice table table-bordered table-striped table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th class="text-center">Book Title</th>
+                        <th class="text-center">Author</th>
+                        <th class="text-center">Year Published</th>
+                        <th class="text-center">Publisher</th>
+                        <th class="text-center">Page Count</th>
+                        <th class="text-center">MSRP</th>
+                        <th class="text-center">Book Cover<br><i>(Click Cover for<br> a Bigger Picture)</i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i>Harry Potter and the Deathly Hallows</i></td>
+                        <td>J.K. Rowling</td>
+                        <td>2007</td>
+                        <td>Bloomsbury Publishing</td>
+                        <td>759</td>
+                        <td>$14.99</td>
+                        <td><a href="img/harry.jpg" class="grow"><img class="img-responsive" src="img/harry.jpg" alt="Harry Potter book cover"></a><br><p id="citation">Source: https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg</p></td>
+                    </tr>
+                    <tr>
+
+                        <td><i>Diary of a Wimpy Kid: Dog Days</i></td>
+                        <td>Jeff Kinney</td>
+                        <td>2009</td>
+                        <td>Abrams Books</td>
+                        <td>217</td>
+                        <td>$13.95</td>
+                        <td><a href="img/diary-kid.jpg" class="grow"><img class="img-responsive" src="img/diary-kid.jpg" alt="Diary of a Wimpy Kid book cover"></a><br><p id="citation">Source: https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg</p></td>
+                    </tr>
+                    <tr>
+
+                        <td><i>The Book Thief</i></td>
+                        <td>Markus Zusak</td>
+                        <td>2005</td>
+                        <td>Alfred A. Knopf</td>
+                        <td>584</td>
+                        <td>$14.99</td>
+                        <td><a href="img/book-thief.jpg" class="grow"><img class="img-responsive" src="img/book-thief.jpg" alt="The Book Thief book cover"></a><br><p id="citation">Source: https://images-na.ssl-images-amazon.com/images/I/9123eop9gIL.jpg</p></td>
+                    </tr>
+                    <tr>
+
+                        <td><i>The Hunger Games</i></td>
+                        <td>Suzanne Collins</td>
+                        <td>2012</td>
+                        <td>Scholastic</td>
+                        <td>374</td>
+                        <td>$11.57</td>
+                        <td><a href="img/hunger-games.jpg" class="grow"><img class="img-responsive" src="img/hunger-games.jpg" alt="The Hunger Games book cover"></a><br><p id="citation">Source: https://images-na.ssl-images-amazon.com/images/I/61JfGcL2ljL.jpg</p></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="add-book">
+            <h3>Add New Book</h3>
+            <form>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Book Title</label>
+            <input type="Book Title" class="form-control" id="formGroupExampleInput" placeholder="ex., Twilight">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Author</label>
+            <input type="Author" class="form-control" id="formGroupExampleInput2" placeholder="ex., Stephanie Meyer">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Year Published</label>
+            <input type="Year Published" class="form-control" id="formGroupExampleInput2" placeholder="ex., 2005">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Publisher</label>
+            <input type="Publisher" class="form-control" id="formGroupExampleInput2" placeholder="ex., Little, Brown and Company">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Page Count</label>
+            <input type="Page Count" class="form-control" id="formGroupExampleInput2" placeholder="ex.,710">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">MSBN</label>
+            <input type="MSBN" class="form-control" id="formGroupExampleInput2" placeholder="ex., $10.99">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Link to Book Cover</label>
+            <input type="book-cover" class="form-control" id="formGroupExampleInput2" placeholder="ex., https://images-na.ssl-images-amazon.com/images/I/41K99+cInvL._SX326_BO1,204,203,200_.jpg">
+          </div>
+          <div class="form-group">
+          <input type="submit" name="submit" id="submit" class="button" value="Add Book to List">
+          </div>
+
+        </form>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src='js/tablesort.min.js'></script>
+    <!-- Extra sort types -->
+    <script src='js/tablesort.number.js'></script>
+    <script src='js/tablesort.date.js'></script>
+    <script>
+      // Tablesort plugin from http://tristen.ca/tablesort/demo/
+      new Tablesort(document.getElementById('taskTable'));
+    </script>
+  </body>
+</html>
