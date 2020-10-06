@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    <title>Online Library - Home </title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">Online Library</a>
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Available Titles <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profile.html">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact Us</a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <div class="page-content">
+      <h1>Available Titles</h1>
+
+      <table id="bookTable" class="table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author(s)</th>
+            <th>Year Published</th>
+            <th>Publisher</th>
+            <th>Page Count</th>
+            <th>MSRP</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Pride and Prejudice</td>
+            <td>Jane Austen</td>
+            <td>1813</td>
+            <td>Thomas Egerton</td>
+            <td>104</td>
+            <td>$16.95</td>
+          </tr>
+        <tr>
+          <td>Percy Jackson &amp; the Olympians: The Lightning Thief</td>
+          <td>Rick Riordan</td>
+          <td>2005</td>
+          <td>Disney-Hyperion</td>
+          <td>377</td>
+          <td>$9.99</td>
+        </tr>
+
+        <tr>
+          <td>Becoming</td>
+          <td>Michelle Obama</td>
+          <td>2018</td>
+          <td>Crown Publishing</td>
+          <td>448</td>
+          <td>$14.99</td>
+        </tr>
+
+        <tr>
+          <td>The Fault in Our Stars</td>
+          <td>John Green</td>
+          <td>2012</td>
+          <td>Dutton Books</td>
+          <td>313</td>
+          <td>$9.99</td>
+        </tr>
+
+        <tr>
+          <td>The Maze Runner</td>
+          <td>James Dashner</td>
+          <td>2009</td>
+          <td>Dell Publishing</td>
+          <td>275</td>
+          <td>$7.99</td>
+        </tr>
+        </tbody>
+        </table>
+
+        <h1>Add a Book</h1>
+
+
+
+        <form class="float-left">
+          <div class="form-group row">
+            <label for="inputTitle" class="col-sm-3 col-form-label">Title</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control"  >
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputAuthors" class="col-sm-3 col-form-label">Author(s)</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" >
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputYear" class="col-sm-3 col-form-label">Year Published</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control"  >
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPub" class="col-sm-3 col-form-label">Publisher</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" >
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPages" class="col-sm-3 col-form-label">Page Count</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control" >
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputMSRP" class="col-sm-3 col-form-label">MSRP ($)</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control" >
+            </div>
+          </div>
+
+          <div class="form-group row">
+          <div class="col-sm-10">
+            <button  type="submit" class="btn btn-primary">Add Book</button>
+          </div>
+        </div>
+        </form>
+
+        <figure id="img-right">
+          <a target="_blank" href="img/bookshelf.jpg"><img  class ="img-thumbnail" src="img/bookshelf.jpg" alt="Bookshelf" width="300"></a>
+          <figcaption><cite>Dakota Corbin, Unsplash.com</cite></figcaption>
+      </figure>
+
+
+    </div>
+
+    <!-- TableSort from http://tristen.ca/tablesort/demo/ -->
+    <script src="js/tablesort.min.js"></script>
+    <script>
+      new Tablesort(document.getElementById('bookTable'));
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
