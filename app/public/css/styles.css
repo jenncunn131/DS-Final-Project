@@ -15,7 +15,11 @@ body{
 }
 
 .certFields {
-  margin-top: -7.5em;
+  margin-top: -7.55em;
+}
+
+.certSaveBtn {
+  margin-left: 13.5em;
 }
 
 .saveBtn {
