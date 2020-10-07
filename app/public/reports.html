@@ -39,14 +39,28 @@
     </div>
   </nav>
 
+  <!-- 2 buttons -->
+    <div class="row">
+      <div class="col-6">
+        <form v-on:submit.prevent="fetchUser">
+          <button type="submit" class="btn btn-primary" value="submit">View Expired Certifications</button>
+        </form>
+      </div>
+      <div class="col-6">
+        <form v-on:submit.prevent="fetchUser">
+          <button type="submit" class="btn btn-primary" value="submit">View Members</button>
+        </form>
+      </div>
+    </div>
+
   <!-- Main -->
-  <h1>View Members</h1>
+  <h1>Report</h1>
 
   <div class="page-content">
 
     <!-- <h1>Available Titles</h1> -->
     <div class="row">
-      <div class="side-first col-8">
+      <div class="side-first col-10">
         <table id="bookTable" class="table-hover">
           <thead>
             <tr>
@@ -99,104 +113,18 @@
         </table>
 
       </div>
-
-      <div class="side-form col-4">
-        <h1>Member Fields</h1>
-
-        <form class="float-left">
-          <div class="form-group row">
-            <label for="inputTitle" class="col-sm-3 col-form-label">First Name</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputAuthors" class="col-sm-3 col-form-label">Last Name</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputYear" class="col-sm-3 col-form-label">Position</label>
-            <div class="col-sm-9">
-              <input type="number" class="form-control">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPub" class="col-sm-3 col-form-label">Radio Number</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPages" class="col-sm-3 col-form-label">Station</label>
-            <div class="col-sm-9">
-              <input type="number" class="form-control">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputMSRP" class="col-sm-3 col-form-label">Email</label>
-            <div class="col-sm-9">
-              <input type="number" class="form-control">
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-          </div>
-        </form>
-
-      </div>
     </div>
   </div>
 
-
-<!-- 3 buttons -->
+  <!--Download button-->
   <div class="row">
-    <div class="col-4">
+    <div class="col-6">
       <form v-on:submit.prevent="fetchUser">
-        <button type="submit" class="btn btn-primary" value="submit">Add New Member</button>
+        <button type="submit" class="btn btn-primary" value="submit">Download Report</button>
       </form>
     </div>
-    <div class="col-4">
-      <form v-on:submit.prevent="fetchUser">
-        <button type="submit" class="btn btn-primary" value="submit">Edit Selected Member</button>
-      </form>
-    </div>
-    <div class="col-4">
-      <form v-on:submit.prevent="fetchUser">
-        <button type="submit" class="btn btn-primary" value="submit">Delete Selected Member</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Table with certifications for selected member -->
-  <h2>Member's Certifications</h2>
-  <table id="bookTable" class="table-hover">
-    <thead>
-      <tr>
-        <th>Certification Title</th>
-        <th>Expiration Date</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>CPR</td>
-        <td>August 2021</td>
-      </tr>
-
-      <tr>
-        <td>HAZMAT</td>
-        <td>December 2020</td>
-      </tr>
-    </tbody>
-  </table>
 
 
-  </div>
 
   <!-- TableSort from http://tristen.ca/tablesort/demo/ -->
   <script src="js/tablesort.min.js"></script>
