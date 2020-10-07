@@ -9,6 +9,26 @@ body{
 
 }
 
+/* adjustments for page layout */
+.memFields {
+  margin-top: -7.5em;
+}
+
+.certFields {
+  margin-top: -7.55em;
+}
+
+.certSaveBtn {
+  margin-left: 13.5em;
+}
+
+.saveBtn {
+  margin-left: 1.0em;
+}
+
+.reportEl {
+  margin-top: -0.5em;
+}
 
 
 .page-content{
