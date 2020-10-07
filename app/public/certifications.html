@@ -40,59 +40,39 @@
   </nav>
 
   <!-- Main -->
-  <h1>View Members</h1>
+  <h1>View Certifications</h1>
 
   <div class="page-content">
 
     <!-- <h1>Available Titles</h1> -->
     <div class="row">
-      <div class="side-first col-8">
+      <div class="side-first col-6">
         <table id="bookTable" class="table-hover">
           <thead>
             <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Position</th>
-              <th>Radio Number</th>
-              <th>Station</th>
-              <th>Email</th>
+              <th>Certification Name</th>
+              <th>Standard Expiration Period</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td>Brijesh</td>
-              <td>Patel</td>
-              <td>Captain</td>
-              <td>69</td>
-              <td>104</td>
-              <td>patelb@ocfr.com</td>
+              <td>CPR</td>
+              <td>2 years</td>
             </tr>
             <tr>
-              <td>Jenny</td>
-              <td>Cunningham</td>
-              <td>Washer</td>
-              <td>10</td>
-              <td>24</td>
-              <td>jcunning@ocfr.com</td>
+              <td>HAZMAT</td>
+              <td>3 years</td>
             </tr>
 
             <tr>
-              <td>Max</td>
-              <td>Grbic</td>
-              <td>Firefighter</td>
-              <td>22</td>
-              <td>24</td>
-              <td>max@ocfr.com</td>
+              <td>EMT</td>
+              <td>1.5 years</td>
             </tr>
 
             <tr>
-              <td>Simran</td>
-              <td>Matharu</td>
-              <td>Driver</td>
-              <td>55</td>
-              <td>24</td>
-              <td>simran@ocfr.com</td>
+              <td>CPR 2</td>
+              <td>4 years</td>
             </tr>
 
           </tbody>
@@ -100,42 +80,24 @@
 
       </div>
 
-      <div class="side-form col-4">
-        <h1>Member Fields</h1>
+      <div class="side-form col-6">
+        <h1>Certification Fields</h1>
 
         <form class="float-left">
           <div class="form-group row">
-            <label for="inputTitle" class="col-sm-3 col-form-label">First Name</label>
+            <label for="inputTitle" class="col-sm-3 col-form-label">Certification Name</label>
             <div class="col-sm-9">
               <input type="text" class="form-control">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputAuthors" class="col-sm-3 col-form-label">Last Name</label>
+            <label for="inputAuthors" class="col-sm-3 col-form-label">Standard Expiration Period</label>
             <div class="col-sm-9">
               <input type="text" class="form-control">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputYear" class="col-sm-3 col-form-label">Position</label>
-            <div class="col-sm-9">
-              <input type="number" class="form-control">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPub" class="col-sm-3 col-form-label">Radio Number</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPages" class="col-sm-3 col-form-label">Station</label>
-            <div class="col-sm-9">
-              <input type="number" class="form-control">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputMSRP" class="col-sm-3 col-form-label">Email</label>
+            <label for="inputYear" class="col-sm-3 col-form-label">Certifiying Agency</label>
             <div class="col-sm-9">
               <input type="number" class="form-control">
             </div>
@@ -157,40 +119,46 @@
   <div class="row">
     <div class="col-4">
       <form v-on:submit.prevent="fetchUser">
-        <button type="submit" class="btn btn-primary" value="submit">Add New Member</button>
+        <button type="submit" class="btn btn-primary" value="submit">Add New Certification</button>
       </form>
     </div>
     <div class="col-4">
       <form v-on:submit.prevent="fetchUser">
-        <button type="submit" class="btn btn-primary" value="submit">Edit Selected Member</button>
+        <button type="submit" class="btn btn-primary" value="submit">Edit Selected Certification</button>
       </form>
     </div>
     <div class="col-4">
       <form v-on:submit.prevent="fetchUser">
-        <button type="submit" class="btn btn-primary" value="submit">Delete Selected Member</button>
+        <button type="submit" class="btn btn-primary" value="submit">Delete Selected Certification</button>
       </form>
     </div>
   </div>
 
   <!-- Table with certifications for selected member -->
-  <h2>Member's Certifications</h2>
+  <h2>Members with this Certification</h2>
   <table id="bookTable" class="table-hover">
     <thead>
       <tr>
-        <th>Certification Title</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Expired?</th>
         <th>Expiration Date</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
-        <td>CPR</td>
-        <td>August 2021</td>
+        <td>Max</td>
+        <td>Grbic</td>
+        <td>Yes</td>
+        <td>August 2020</td>
       </tr>
 
       <tr>
-        <td>HAZMAT</td>
-        <td>December 2020</td>
+        <td>Simran</td>
+        <td>Matharu</td>
+        <td>No</td>
+        <td>December 2021</td>
       </tr>
     </tbody>
   </table>
