@@ -54,9 +54,10 @@
     </div>
 
   <!-- Main -->
-  <h1 class="reportEl">Report</h1>
+
 
   <div class="page-content">
+    <h1 class="reportEl">Report</h1>
 
     <!-- <h1>Available Titles</h1> -->
     <div class="row">
@@ -114,13 +115,14 @@
 
       </div>
     </div>
+  
   </div>
 
   <!--Download button-->
   <div class="row">
     <div class="col-6">
       <form v-on:submit.prevent="fetchUser">
-        <button type="submit" class="btn btn-primary" value="submit">Download Report</button>
+        <button type="submit" class="btn btn-primary" id="report-btn" value="submit">Download Report</button>
       </form>
     </div>
 

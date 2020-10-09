@@ -15,6 +15,15 @@ body{
   margin-top: -7.5em;
 }
 
+.side-first {
+  display:block;
+  z-index:-100px;
+}
+
+.side-form {
+  display:block;
+}
+
 .certFields {
   margin-top: -7.55em;
 }
@@ -163,6 +172,10 @@ input {
   background-color: #AEC5EB;
   color: #3A405A;;
 }
+
+
+#report-btn {
+
 
 form{
   float:left;
