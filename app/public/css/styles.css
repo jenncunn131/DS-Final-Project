@@ -12,9 +12,18 @@ body{
 
 /* adjustments for page layout */
 .memFields {
-  margin-top: -7.5em;
-}
+  margin-top: -8.0em;
+  /* added adjustment for my fullsize display error */
+  /* padding-left: 250px; */
+  /* margin-left: auto; */
+  /* overflow-x: auto; */
+  margin-left: 12em;
 
+}
+/* more adjustments for full */
+.vMemsTable {
+  margin-bottom: 5em;
+}
 .side-first {
   display:block;
   z-index:-100px;
@@ -44,6 +53,9 @@ body{
 .page-content{
   margin: 1.0em 3.0em;
   padding: 0 1.0em 0;
+
+  /* mg-mess w resizing issues */
+  /* margin-right: auto; */
 }
 
 .navbar a {
