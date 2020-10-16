@@ -42,7 +42,7 @@
   <!-- Main -->
 
 
-  <div class="page-content">
+  <div class="page-content" id = 'certProfile'>
     <h1>View Certifications</h1>
 
     <!-- <h1>Available Titles</h1> -->
@@ -57,11 +57,11 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>CPR</td>
-              <td>2 years</td>
+            <tr v-for="certification in certifications">
+              <td>{{certification.certificationName}}</td>
+              <td>{{certification.defaultExpPeriod}}</td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td>HAZMAT</td>
               <td>3 years</td>
             </tr>
@@ -74,7 +74,7 @@
             <tr>
               <td>CPR 2</td>
               <td>4 years</td>
-            </tr>
+            </tr> -->
 
           </tbody>
         </table>
@@ -169,6 +169,8 @@
   </div>
 
   <!-- TableSort from http://tristen.ca/tablesort/demo/ -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/cert-app.js"></script>
   <script src="js/tablesort.min.js"></script>
   <script>
     new Tablesort(document.getElementById('bookTable'));

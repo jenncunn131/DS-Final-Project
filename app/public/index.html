@@ -62,15 +62,15 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>Brijesh</td>
-              <td>Patel</td>
-              <td>Captain</td>
-              <td>69</td>
-              <td>104</td>
-              <td>patelb@ocfr.com</td>
+            <tr v-for="user in users">
+              <td>{{user.fname}}</td>
+              <td>{{user.lname}}</td>
+              <td>{{user.position}}</td>
+              <td>{{user.radioNum}}</td>
+              <td>{{user.stationNum}}</td>
+              <td>{{user.email}}</td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td>Jenny</td>
               <td>Cunningham</td>
               <td>Washer</td>
@@ -95,7 +95,7 @@
               <td>55</td>
               <td>24</td>
               <td>simran@ocfr.com</td>
-            </tr>
+            </tr> -->
 
           </tbody>
         </table>
@@ -106,41 +106,41 @@
       <!-- <div class="side-form col-4 memFields"> -->
         <h1>Member Fields</h1>
 
-        <form class="float-left">
+        <form method = "post" v-on:submit.prevent = "addPerson()" class="float-left" >
           <div class="form-group row">
             <label for="inputTitle" class="col-sm-3 col-form-label">First Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control">
+              <input v-model = "newUser.fname" id= "newUserFname" type="text" class="form-control">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputAuthors" class="col-sm-3 col-form-label">Last Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control">
+              <input  v-model = "newUser.lname" id= "newUserLname"  type="text" class="form-control">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputYear" class="col-sm-3 col-form-label">Position</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control">
+              <input v-model = "newUser.position" id= "newUserPosition" type="text" class="form-control">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputPub" class="col-sm-3 col-form-label">Radio Number</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control">
+              <input v-model = "newUser.radioNum" id= "newUserradioNum" type="number" class="form-control">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputPages" class="col-sm-3 col-form-label">Station</label>
+            <label for="inputPages" class="col-sm-3 col-form-label">Station Number</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control">
+              <input v-model = "newUser.stationNum" id= "newUserStationNum"  type="number" class="form-control">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputMSRP" class="col-sm-3 col-form-label">Email</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control">
+              <input v-model = "newUser.email" id= "newUserEmail"  type="text" class="form-control">
             </div>
           </div>
 
