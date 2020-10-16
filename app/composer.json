@@ -1,0 +1,14 @@
+{
+    "name": "jenncunn131/DS-Final-Project",
+    "description": "Team12 DS Project",
+    "license": "private",
+    "authors": [{
+        "name": "Team12"
+    }],
+    "require": {
+      "ramsey/uuid": "^4.1"
+    },
+    "autoload": {
+        "classmap": ["class/DbConnection.php"]
+    }
+}
