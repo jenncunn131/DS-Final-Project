@@ -1,37 +1,19 @@
 var myApp = new Vue({
   //points to a CSS selector
-  el: '#userProfile',
+  el: '#certProfile',
   //include all characteristics you want to see on the page under data and initialize elements here
   data: {
-    users: [{
-      fname:'',
-      lname:'',
-      mobilePhone:'',
-      homePhone:'',
-      stationNum:'',
-      IsActive:'',
-      email:'',
-      position:'',
-      gender:'',
-      radioNum:'',
-      street:'',
-      city:'',
-      state:'',
-      zip:''
-      // firstName: '',
-      // lastName:'',
-      // position:'',
-      // radioNume:'',
-      // station:'',
-      // email:''
+    certifications: [{
+      certificationName:'',
+      defaultExpPeriod:'',
+      certifyingAgency:''
+
     }],
-    newUser:{
-      fname:'',
-      lname:'',
-      position:'',
-      radioNum:'',
-      stationNum:'',
-      email:''
+
+    newCert:{
+      certificationName:'',
+      defaultExpPeriod:'',
+      certifyingAgency:''
     }
 
     // userName:'',
@@ -45,19 +27,19 @@ var myApp = new Vue({
   },
   //created is the first thing browser recognizes when you launch application
   created(){
-    this.fetchUser();
+    this.fetchCertifications();
 
   },
 
   methods: {
       // fetchUser: function(){
-      fetchUser(){
+      fetchCertifications(){
       console.log("reaced here");
-      fetch('api/people/index.php')
+      fetch('api/certifications/viewCert.php')
       .then(response => response.json())
       .then(data => {
-        this.users = data;
-        console.log(this.users);
+        this.certifications = data;
+        console.log(this.certifications);
         // this.users = data.results[0];
         // // var userData = data.results[0];
         // // console.log(json);
@@ -73,14 +55,14 @@ var myApp = new Vue({
 
       });
     },
-    addPerson() {
+    addCertification() {
      // evt.preventDefault();  // Redundant w/ Vue's submit.prevent
 
      // TODO: Validate the data!
 
-     fetch('api/people/addppl.php', {
+     fetch('api/certifications/addcert.php', {
        method:'POST',
-       body: JSON.stringify(this.newUser),
+       body: JSON.stringify(this.newCert),
        headers: {
          "Content-Type": "application/json; charset=utf-8"
        }
@@ -89,12 +71,12 @@ var myApp = new Vue({
      .then( json => {
        console.log("Returned from post:", json);
        // TODO: test a result was returned!
-       this.users.push(json[0]);
-       this.newUser = this.newUserData();
+       this.certifications.push(json[0]);
+       this.newCert = this.newCertData();
      });
 
      console.log("Creating (POSTing)...!");
-     console.log(this.newUser);
+     console.log(this.newCert);
    },
 
 
