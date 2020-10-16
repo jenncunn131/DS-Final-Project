@@ -19,19 +19,16 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO People (fname,lname, position, radioNum, stationNum, email)
-  VALUES (?, ?, ?, ?, ?, ?)'
+  'INSERT INTO Certifications (certificationName,defaultExpPeriod, certifyingAgency)
+  VALUES (?, ?, ?)'
 );
-
 
 $stmt->execute([
   // $guid,
-  $_POST['fname'],
-  $_POST['lname'],
-  $_POST['position'],
-  $_POST['radioNum'],
-  $_POST['stationNum'],
-  $_POST['email']
+  $_POST['certificationName'],
+  $_POST['defaultExpPeriod'],
+  $_POST['certifyingAgency'],
+
 ]);
 
 // If needed, get auto-generated PK from DB

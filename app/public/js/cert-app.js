@@ -55,14 +55,14 @@ var myApp = new Vue({
 
       });
     },
-    addPerson() {
+    addCertification() {
      // evt.preventDefault();  // Redundant w/ Vue's submit.prevent
 
      // TODO: Validate the data!
 
-     fetch('api/people/addppl.php', {
+     fetch('api/certifications/addcert.php', {
        method:'POST',
-       body: JSON.stringify(this.newUser),
+       body: JSON.stringify(this.newCert),
        headers: {
          "Content-Type": "application/json; charset=utf-8"
        }
@@ -71,12 +71,12 @@ var myApp = new Vue({
      .then( json => {
        console.log("Returned from post:", json);
        // TODO: test a result was returned!
-       this.users.push(json[0]);
-       this.newUser = this.newUserData();
+       this.certifications.push(json[0]);
+       this.newCert = this.newCertData();
      });
 
      console.log("Creating (POSTing)...!");
-     console.log(this.newUser);
+     console.log(this.newCert);
    },
 
 

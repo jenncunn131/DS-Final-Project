@@ -84,23 +84,23 @@
       <div class="side-form col-6 certFields">
         <h1>Certification Fields</h1>
 
-        <form class="float-left">
+        <form method = "post" v-on:submit.prevent = "addCertification()" class="float-left">
           <div class="form-group row">
             <label for="inputTitle" class="col-sm-3 col-form-label">Certification Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control">
+              <input v-model = "newCert.certificationName" id= "newCertName"  type="text" class="form-control">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputAuthors" class="col-sm-3 col-form-label">Standard Expiration Period</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control">
+              <input v-model = "newCert.defaultExpPeriod" id= "newCertExpPeriod" type="text" class="form-control">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputYear" class="col-sm-3 col-form-label">Certifiying Agency</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control">
+              <input v-model = "newCert.certifyingAgency" id= "newCertAgency" type="text" class="form-control">
             </div>
           </div>
 
