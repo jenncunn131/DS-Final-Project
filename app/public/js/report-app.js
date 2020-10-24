@@ -1,10 +1,17 @@
 var myApp = new Vue({
   //points to a CSS selector
-  el: '#userProfile',
+  el: '#reportApp',
   //include all characteristics you want to see on the page under data and initialize elements here
   data: {
+    expmembers: [{
+      fname:'',
+      lname:'',
+      expirationDate:'',
+      certificationName:''
+
+    }],
     users: [{
-      personID:'',
+
       fname:'',
       lname:'',
       mobilePhone:'',
@@ -19,22 +26,12 @@ var myApp = new Vue({
       city:'',
       state:'',
       zip:''
-
-    }],
-    activeUser:{},
-    //console.log(this.activeUser),
-    newUser:{
-      fname:'',
-      lname:'',
-      position:'',
-      radioNum:'',
-      stationNum:'',
-      email:''
-    }
+    }]
 
   },
   //created is the first thing browser recognizes when you launch application
   created(){
+    this.fetchExpMembers();
     this.fetchUser();
 
 
@@ -45,7 +42,7 @@ var myApp = new Vue({
       // fetchUser: function(){
       fetchUser(){
       console.log("reaced here");
-      fetch('api/people/index.php')
+      fetch('api/reports/allmembers.php')
       .then(response => response.json())
       .then(data => {
         this.users = data;
@@ -53,31 +50,20 @@ var myApp = new Vue({
 
       });
     },
-    addPerson() {
+    fetchExpMembers() {
      // evt.preventDefault();  // Redundant w/ Vue's submit.prevent
 
      // TODO: Validate the data!
 
-     fetch('api/people/addppl.php', {
-       method:'POST',
-       body: JSON.stringify(this.newUser),
-       headers: {
-         "Content-Type": "application/json; charset=utf-8"
-       }
-     })
-     .then( response => response.json() )
-     .then( json => {
-       console.log("Returned from post:", json);
-       // TODO: test a result was returned!
-       this.users.push(json[0]);
-       this.newUser = this.newUserData();
-     });
+     console.log("reaced here");
+     fetch('api/reports/expmembers.php')
+     .then(response => response.json())
+     .then(data => {
+       this.expmembers = data;
+       console.log(this.expmembers);
 
-     console.log("Creating (POSTing)...!");
-     console.log(this.newUser);
-     console.log(this.users);
-
-   },
+   });
+ },
 
 
     formatDate(d){
@@ -85,6 +71,5 @@ var myApp = new Vue({
       return moment(d).format("MMMM Do YYYY");
 
     }
-
   }
 })

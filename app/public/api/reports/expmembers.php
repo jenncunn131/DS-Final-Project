@@ -6,7 +6,11 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT * FROM People';
+$sql = 'SELECT p.fname, p.lname, pc.expirationDate, c.certificationName
+FROM Per_cert pc, People p, Certifications c
+WHERE pc.personID = p.personID
+AND pc.certificationID = c.certificationID
+AND pc.expirationDate < now()';
 $vars = [];
 
 if (isset($_GET['personID'])) {
