@@ -19,8 +19,7 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO People (fname, lname, mobilePhone, position, radioNum, stationNum, email, street, city, state, zip)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+  'UPDATE People SET mobilePhone = ?, SET email = ?, SET position = ?, SET street = ?, SET zip = ? WHERE personID = ?'
 );
 
 
@@ -34,8 +33,6 @@ $stmt->execute([
   $_POST['stationNum'],
   $_POST['email'],
   $_POST['street'],
-  $_POST['city'],
-  $_POST['state'],
   $_POST['zip']
 ]);
 

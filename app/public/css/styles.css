@@ -10,6 +10,10 @@ body{
   color: #3A405A;
 }
 
+.row, .side-form{
+  margin: 2.0em 0;
+}
+
 /* adjustments for page layout */
 .memFields {
   margin-top: -8.0em;
@@ -17,7 +21,7 @@ body{
   /* padding-left: 250px; */
   /* margin-left: auto; */
   /* overflow-x: auto; */
-  margin-left: 12em;
+  margin-left: 6em;
 
 }
 /* more adjustments for full */

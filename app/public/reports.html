@@ -8,7 +8,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+  <link rel="icon" href="data:;base64,=">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 
   <title>OCFR - Home</title>
@@ -39,30 +39,51 @@
     </div>
   </nav>
 
-  <!-- 2 buttons -->
-    <div class="row">
-      <div class="col-6">
-        <form v-on:submit.prevent="fetchUser">
-          <button type="submit" class="btn btn-primary" value="submit">View Expired Certifications</button>
-        </form>
-      </div>
-      <div class="col-6">
-        <form v-on:submit.prevent="fetchUser">
-          <button type="submit" class="btn btn-primary" value="submit">View Members</button>
-        </form>
-      </div>
-    </div>
+  <div class="page-content" id="reportApp">
+
 
   <!-- Main -->
 
 
-  <div class="page-content">
-    <h1 class="reportEl">Report</h1>
 
     <!-- <h1>Available Titles</h1> -->
     <div class="row">
-      <div class="side-first col-10">
-        <table id="bookTable" class="table-hover">
+
+      <div class="side-first col-lg-12 col-md-12 col-sm-12 col-xs-12 vMemsTable">
+        <h1 class="reportEl">Members with Expired Certifications</h1>
+
+        <table id="reportExpMembers" class="table-hover">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Certification</th>
+              <th>Expiration Date</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr v-for="expmember in expmembers">
+              <td>{{expmember.fname}}</td>
+              <td>{{expmember.lname}}</td>
+              <td>{{expmember.certificationName}}</td>
+              <td>{{expmember.expirationDate}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="side-first col-lg-12 col-md-12 col-sm-12 col-xs-12 vMemsTable">
+        <h1 class="reportEl">All Members</h1>
+
+        <table id="reportAllMembers" class="table-hover">
           <thead>
             <tr>
               <th>First Name</th>
@@ -71,43 +92,18 @@
               <th>Radio Number</th>
               <th>Station</th>
               <th>Email</th>
+
             </tr>
           </thead>
 
           <tbody>
-            <tr>
-              <td>Brijesh</td>
-              <td>Patel</td>
-              <td>Captain</td>
-              <td>69</td>
-              <td>104</td>
-              <td>patelb@ocfr.com</td>
-            </tr>
-            <tr>
-              <td>Jenny</td>
-              <td>Cunningham</td>
-              <td>Washer</td>
-              <td>10</td>
-              <td>24</td>
-              <td>jcunning@ocfr.com</td>
-            </tr>
-
-            <tr>
-              <td>Max</td>
-              <td>Grbic</td>
-              <td>Firefighter</td>
-              <td>22</td>
-              <td>24</td>
-              <td>max@ocfr.com</td>
-            </tr>
-
-            <tr>
-              <td>Simran</td>
-              <td>Matharu</td>
-              <td>Driver</td>
-              <td>55</td>
-              <td>24</td>
-              <td>simran@ocfr.com</td>
+            <tr v-for="user in users">
+              <td>{{user.fname}}</td>
+              <td>{{user.lname}}</td>
+              <td>{{user.position}}</td>
+              <td>{{user.radioNum}}</td>
+              <td>{{user.stationNum}}</td>
+              <td>{{user.email}}</td>
             </tr>
 
           </tbody>
@@ -115,8 +111,8 @@
 
       </div>
     </div>
-  
-  </div>
+
+
 
   <!--Download button-->
   <div class="row">
@@ -126,12 +122,15 @@
       </form>
     </div>
 
-
+</div>
+</div>
 
   <!-- TableSort from http://tristen.ca/tablesort/demo/ -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/report-app.js"></script>
   <script src="js/tablesort.min.js"></script>
   <script>
-    new Tablesort(document.getElementById('bookTable'));
+    new Tablesort(document.getElementById('reportExpMembers'));
   </script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
