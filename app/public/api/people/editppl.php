@@ -41,4 +41,5 @@ $pk = $db->lastInsertId();
 header('HTTP/1.1 303 See Other');
 
 // Redirects to the Get API in order to refresh the table without refreshing the page
+//uncommented this leads to additonal comments
 // header('Location: ../people/?personID=' . $pk);
