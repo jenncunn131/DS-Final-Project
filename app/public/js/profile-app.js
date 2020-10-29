@@ -3,25 +3,9 @@ var myApp = new Vue({
   el: '#userProfile',
   //include all characteristics you want to see on the page under data and initialize elements here
   data: {
-    users: [{
-      personID:'',
-      fname:'',
-      lname:'',
-      mobilePhone:'',
-      homePhone:'',
-      stationNum:'',
-      IsActive:'',
-      email:'',
-      position:'',
-      gender:'',
-      radioNum:'',
-      street:'',
-      city:'',
-      state:'',
-      zip:''
-
-    }],
-    activeUser:{},
+    users: [
+  ],
+    activeUser:null,
     //console.log(this.activeUser),
     newUser:{
       fname:'',
