@@ -19,21 +19,17 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'UPDATE People SET mobilePhone = ?, SET email = ?, SET position = ?, SET street = ?, SET zip = ? WHERE personID = ?'
+  'UPDATE People SET position = ?, radioNum = ?, stationNum = ?, email = ? WHERE personID = ?'
 );
 
 
 $stmt->execute([
   // $guid,
-  $_POST['fname'],
-  $_POST['lname'],
-  $_POST['mobilePhone'],
   $_POST['position'],
   $_POST['radioNum'],
   $_POST['stationNum'],
   $_POST['email'],
-  $_POST['street'],
-  $_POST['zip']
+  $_POST['personID']
 ]);
 
 // If needed, get auto-generated PK from DB
@@ -45,4 +41,4 @@ $pk = $db->lastInsertId();
 header('HTTP/1.1 303 See Other');
 
 // Redirects to the Get API in order to refresh the table without refreshing the page
-header('Location: ../people/?personID=' . $pk);
+// header('Location: ../people/?personID=' . $pk);

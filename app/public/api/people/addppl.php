@@ -48,4 +48,4 @@ $pk = $db->lastInsertId();
 header('HTTP/1.1 303 See Other');
 
 // Redirects to the Get API in order to refresh the table without refreshing the page
-header('Location: ../people/?personID=' . $pk);
+header('Location: ../people/index.php/?personID=' . $pk);

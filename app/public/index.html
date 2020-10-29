@@ -95,7 +95,7 @@
                 <div class="form-group row">
                   <label for="inputFname" class="col-sm-3 col-form-label">First Name</label>
                   <div class="col-sm-9">
-                    <input v-model = "newUser.fname" id= "newUserFname" type="text" class="form-control" >
+                    <input v-model = "newUser.fname" id= "inputFname" type="text" class="form-control" >
                   </div>
                 </div>
                 <div class="form-group row">
@@ -178,7 +178,7 @@
       <!-- <div class="side-form col-4 memFields"> -->
         <h1>Edit a Member</h1>
 
-        <form method = "post" v-on:submit.prevent = "addPerson()" class="float-left" >
+        <form method = "post" v-on:submit.prevent = "editPerson()" class="float-left" >
           <div class="form-group row">
             <label for="editFName" class="col-sm-3 col-form-label">First Name</label>
             <div class="col-sm-9">
@@ -194,25 +194,25 @@
           <div class="form-group row">
             <label for="editPos" class="col-sm-3 col-form-label">Position</label>
             <div class="col-sm-9">
-              <input  id= "editUserPosition" type="text" class="form-control">
+              <input  id= "editUserPosition" v-bind:value="activeUser.position" type="text" class="form-control">
             </div>
           </div>
           <div class="form-group row">
             <label for="editRadio" class="col-sm-3 col-form-label">Radio Number</label>
             <div class="col-sm-9">
-              <input  id= "editUserradioNum" type="number" class="form-control">
+              <input  id= "editUserradioNum" v-bind:value="activeUser.radioNum" type="number" class="form-control">
             </div>
           </div>
           <div class="form-group row">
             <label for="editStation" class="col-sm-3 col-form-label">Station Number</label>
             <div class="col-sm-9">
-              <input  id= "editUserStationNum"  type="number" class="form-control">
+              <input  id= "editUserStationNum"  v-bind:value="activeUser.stationNum" type="number" class="form-control">
             </div>
           </div>
           <div class="form-group row">
             <label for="editEmail" class="col-sm-3 col-form-label">Email</label>
             <div class="col-sm-9">
-              <input  id= "editUserEmail"  type="text" class="form-control">
+              <input  id= "editUserEmail" v-bind:value="activeUser.email" type="text" class="form-control">
             </div>
           </div>
 

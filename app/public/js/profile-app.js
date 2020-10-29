@@ -26,10 +26,15 @@ var myApp = new Vue({
     newUser:{
       fname:'',
       lname:'',
+      mobilePhone:'',
+      stationNum:'',
+      email:'',
       position:'',
       radioNum:'',
-      stationNum:'',
-      email:''
+      street:'',
+      city:'',
+      state:'',
+      zip:''
     }
 
   },
@@ -42,6 +47,16 @@ var myApp = new Vue({
 
 
   methods: {
+    // newUserData(){
+    //   return{
+    //     fname:'',
+    //     lname:'',
+    //     position:'',
+    //     radioNum:'',
+    //     stationNum:'',
+    //     email:''
+    //   }
+    // },
       // fetchUser: function(){
       fetchUser(){
       console.log("reaced here");
@@ -53,11 +68,31 @@ var myApp = new Vue({
 
       });
     },
+    editPerson(){
+      fetch('api/people/editppl.php', {
+      method:'POST',
+      body: JSON.stringify(this.activeUser),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    })
+    .then( response => response.json() )
+    .then( json => {
+      console.log("Returned from post:", json);
+      // TODO: test a result was returned!
+      this.users.push(json[0]);
+      this.activeUser = this.activeUserData();
+    });
+
+    console.log("Creating (POSTing)...!");
+    console.log(this.activeUser);
+    },
+
     addPerson() {
      // evt.preventDefault();  // Redundant w/ Vue's submit.prevent
 
      // TODO: Validate the data!
-
+     //
      fetch('api/people/addppl.php', {
        method:'POST',
        body: JSON.stringify(this.newUser),
@@ -75,8 +110,8 @@ var myApp = new Vue({
 
      console.log("Creating (POSTing)...!");
      console.log(this.newUser);
-     console.log(this.users);
-
+     // console.log(this.users);
+     // console.log('fname:'+this.newUser.fname);
    },
 
 
