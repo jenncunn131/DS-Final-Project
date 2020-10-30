@@ -19,7 +19,12 @@ var myApp = new Vue({
       city:'',
       state:'',
       zip:''
+    },
+    membercerts: [{
+
     }
+
+    ]
 
   },
   //created is the first thing browser recognizes when you launch application
@@ -42,7 +47,8 @@ var myApp = new Vue({
     //   }
     // },
       // fetchUser: function(){
-      fetchUser(){
+
+    fetchUser(){
       console.log("reaced here");
       fetch('api/people/index.php')
       .then(response => response.json())
@@ -50,6 +56,33 @@ var myApp = new Vue({
         this.users = data;
         console.log(this.users);
 
+    });
+  },
+    activeUserData(){
+      return{
+          fname:'',
+          lname:'',
+          mobilePhone:'',
+          stationNum:'',
+          email:'',
+          position:'',
+          radioNum:'',
+          street:'',
+          city:'',
+          state:'',
+          zip:'',
+          personID:''
+        }
+    },
+    test123(){
+      console.log("test123");
+    },
+    showTable(){
+      fetch('api/people/showtable.php?personID=' +activeUser.personID)
+      .then(response => response.json())
+      .then(data => {
+        this.membercerts = data;
+        console.log(this.membercerts);
       });
     },
     editPerson(){
@@ -65,6 +98,26 @@ var myApp = new Vue({
       console.log("Returned from post:", json);
       // TODO: test a result was returned!
       this.users.push(json[0]);
+      this.activeUser = this.activeUserData();
+    });
+
+    console.log("Creating (POSTing)...!");
+    console.log(this.activeUser);
+    },
+
+    deletePerson(){
+      fetch('api/people/deleteppl.php', {
+      method:'POST',
+      body: JSON.stringify(this.activeUser),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    })
+    .then( response => response.json() )
+    .then( json => {
+      console.log("Returned from post:", json);
+      // TODO: test a result was returned!
+      this.users=json;
       this.activeUser = this.activeUserData();
     });
 
@@ -104,6 +157,6 @@ var myApp = new Vue({
       return moment(d).format("MMMM Do YYYY");
 
     }
-
   }
-})
+
+  })

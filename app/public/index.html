@@ -49,7 +49,7 @@
     <div class="row">
       <div class="side-first col-lg-12 col-md-12 col-sm-12 col-xs-12 vMemsTable">
 
-        <table id="bookTable" class="table-hover">
+        <table id="memberTable" class="table-hover">
           <thead>
             <tr>
               <th>First Name</th>
@@ -65,7 +65,7 @@
           </thead>
 
           <tbody>
-            <tr v-for="user in users" v-on:click="activeUser=user">
+            <tr v-for="user in users" v-on:click="activeUser=user; test123();">
               <td>{{user.fname}}</td>
               <td>{{user.lname}}</td>
               <td>{{user.position}}</td>
@@ -176,9 +176,9 @@
 
       <div class="side-form col-lg-4 col-md-6 col-sm-6 col-xs-12 memFields">
       <!-- <div class="side-form col-4 memFields"> -->
-        <h1>Edit a Member</h1>
 
         <form v-on:submit.prevent="editPerson()" class="float-left" v-if="activeUser">
+          <h1>Edit a Member</h1>
           <div class="form-group row">
             <label for="editFName" class="col-sm-3 col-form-label">First Name</label>
             <div class="col-sm-9">
@@ -223,6 +223,25 @@
           </div>
         </form>
 
+        <form v-on:submit.prevent="deletePerson()" class="float-left" v-if="activeUser">
+          <h1>Delete a Member</h1>
+          <div class="form-group row">
+            <label for="deleteFName" class="col-sm-3 col-form-label">First Name</label>
+            <div class="col-sm-9">
+              <input id="deleteUserFname" type="text" class="form-control" v-model="activeUser.fname" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="deleteLName" class="col-sm-3 col-form-label">Last Name</label>
+            <div class="col-sm-9">
+              <input  id="deleteUserLname"  type="text" v-model="activeUser.lname" readonly class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-10 deleteBtn">
+            <button type="submit" class="btn btn-primary">Delete Member</button>
+          </div>
+        </form>
+
       </div>
 
     </div>
@@ -248,28 +267,41 @@
     </div>
   </div> -->
 
-  <!-- Table with certifications for selected member -->
-  <h2>Member's Certifications</h2>
-  <table id="bookTable" class="table-hover">
-    <thead>
-      <tr>
-        <th>Certification Title</th>
-        <th>Expiration Date</th>
-      </tr>
-    </thead>
+<!-- Member certifications commented out for functionality issues -->
+  <!-- <h2>Member's Certifications</h2>
+  <form v-on:submit.prevent="showTable()" class="float-left" v-if="activeUser">
+    <div class="form-group row">
+      <label for="showFName" class="col-sm-3 col-form-label">First Name</label>
+      <div class="col-sm-9">
+        <input id= "showUserFname" type="text" class="form-control" v-model="activeUser.fname" readonly>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="showLName" class="col-sm-3 col-form-label">Last Name</label>
+      <div class="col-sm-9">
+        <input  id="showUserLname"  type="text" v-model="activeUser.lname" readonly class="form-control">
+      </div>
+    </div>
+    <div class="col-sm-10 showTableBtn">
+      <button type="submit" class="btn btn-primary">Show Certifications</button>
+    </div>
+    <table id="memberCertTable" class="table-hover" >
+      <thead>
+        <tr>
+          <th>Certification Title</th>
+          <th>Expiration Date</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <tr>
-        <td>CPR</td>
-        <td>August 2021</td>
-      </tr>
+      <tbody>
+        <tr v-for:"membercert in membercerts" v-if:"activeUser">
+          <td>{{ membercert.certificationName }}</td>
+          <td>{{ membercert.expirationDate }}</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <tr>
-        <td>HAZMAT</td>
-        <td>December 2020</td>
-      </tr>
-    </tbody>
-  </table>
+  </form> -->
 
 
   </div>
@@ -281,7 +313,7 @@
   <script src="js/profile-app.js"></script>
   <script src="js/tablesort.min.js"></script>
   <script>
-    new Tablesort(document.getElementById('bookTable'));
+    new Tablesort(document.getElementById('memberTable'));
   </script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
