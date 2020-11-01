@@ -10,23 +10,28 @@ var myApp = new Vue({
       certificationName:''
 
     }],
-    users: [{
-
-      fname:'',
-      lname:'',
-      mobilePhone:'',
-      homePhone:'',
-      stationNum:'',
-      IsActive:'',
-      email:'',
-      position:'',
-      gender:'',
-      radioNum:'',
-      street:'',
-      city:'',
-      state:'',
-      zip:''
-    }]
+    users: [
+    //   {
+    //
+    //   fname:'',
+    //   lname:'',
+    //   mobilePhone:'',
+    //   homePhone:'',
+    //   stationNum:'',
+    //   IsActive:'',
+    //   email:'',
+    //   position:'',
+    //   gender:'',
+    //   radioNum:'',
+    //   street:'',
+    //   city:'',
+    //   state:'',
+    //   zip:''
+    // }
+  ],
+  select:{
+    expCert:''
+  },
 
   },
   //created is the first thing browser recognizes when you launch application

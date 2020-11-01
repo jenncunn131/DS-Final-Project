@@ -18,18 +18,22 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
-$sql = 'SELECT * FROM People, Certification, Per_cert';
+$sql = 'SELECT pc.personID, pc.expirationDate, c.certificationName, p.fname, p.lname
+        FROM Per_cert pc, People p, Certifications c
+        WHERE p.personID=pc.personID
+        -- AND p.personID=?
+        AND pc.certificationID = c.certificationID';
 $vars = [];
 
-if (isset($_GET['personID'])) {
-  // This is an example of a parameterized query
-  $sql = 'SELECT pc.expirationDate, c.certificationName
-          FROM Per_cert pc, People p, Certifications c
-          WHERE p.personID=pc.personID
-          AND p.personID=?
-          AND pc.certificationID = c.certificationID';
-  $vars = [ $_GET['personID'] ];
-}
+// if (isset($_GET['personID'])) {
+//   // This is an example of a parameterized query
+//   $sql = 'SELECT pc.expirationDate, c.certificationName
+//           FROM Per_cert pc, People p, Certifications c
+//           WHERE p.personID=pc.personID
+//           -- AND p.personID=?
+//           AND pc.certificationID = c.certificationID';
+//   $vars = [ $_GET['personID'] ];
+// }
 
 $stmt = $db->prepare($sql);
 $stmt->execute($vars);
