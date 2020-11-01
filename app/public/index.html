@@ -45,6 +45,7 @@
 
   <div class="page-content" id="userProfile">
     <h1>View Members</h1>
+    <p>Select a member from the table to edit or delete their record.</p>
     <!-- <h1>Available Titles</h1> -->
     <div class="row">
       <div class="side-first col-lg-12 col-md-12 col-sm-12 col-xs-12 vMemsTable">
@@ -242,8 +243,38 @@
           </div>
         </form>
 
-      </div>
 
+        <!-- https://stackoverflow.com/questions/45906659/a-complex-condition-inside-v-if/45907070 -->
+
+        <section>
+          <h1>Member Certifications</h1>
+          <p>Select a member from the drop-down to view their certifications.</p>
+
+          <div class="membercertTbl">
+          <div class="select">
+            <select v-model="select.member">
+              <option value="">All Members</option>
+              <option v-for="user in users">{{user.fname}} {{user.lname}}</option>
+            </select>
+          </div>
+
+          <table id="memberCertTable" class="table-hover" >
+            <thead>
+              <tr>
+                <th>Certification Title</th>
+                <th>Expiration Date</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr v-for="membercert in certDetails" v-if="select.member=='' || select.member == (membercert.fname + ' ' + membercert.lname)">
+                <td>{{ membercert.certificationName }}</td>
+                <td>{{ membercert.expirationDate }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </section>
     </div>
 
 
@@ -312,7 +343,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="js/profile-app.js"></script>
   <script src="js/tablesort.min.js"></script>
-  <script>
+  <script type="application/javascript">
     new Tablesort(document.getElementById('memberTable'));
   </script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -41,16 +41,19 @@
 
   <div class="page-content" id="reportApp">
 
-
-  <!-- Main -->
-
-
-
     <!-- <h1>Available Titles</h1> -->
     <div class="row">
 
       <div class="side-first col-lg-12 col-md-12 col-sm-12 col-xs-12 vMemsTable">
         <h1 class="reportEl">Members with Expired Certifications</h1>
+
+        <!-- https://stackoverflow.com/questions/45906659/a-complex-condition-inside-v-if/45907070 -->
+        <div class="select">
+          <select v-model="select.expCert">
+            <option value="">All Certifications</option>
+            <option v-for="expmember in expmembers">{{expmember.certificationName}}</option>
+          </select>
+        </div>
 
         <table id="reportExpMembers" class="table-hover">
           <thead>
@@ -64,7 +67,7 @@
           </thead>
 
           <tbody>
-            <tr v-for="expmember in expmembers">
+            <tr v-for="expmember in expmembers" v-if="select.expCert=='' || select.expCert == expmember.certificationName">
               <td>{{expmember.fname}}</td>
               <td>{{expmember.lname}}</td>
               <td>{{expmember.certificationName}}</td>
@@ -90,7 +93,7 @@
               <th>Last Name</th>
               <th>Position</th>
               <th>Radio Number</th>
-              <th>Station</th>
+              <th data-sort>Station</th>
               <th>Email</th>
 
             </tr>
@@ -130,7 +133,7 @@
   <script src="js/report-app.js"></script>
   <script src="js/tablesort.min.js"></script>
   <script>
-    new Tablesort(document.getElementById('reportExpMembers'));
+    new Tablesort(document.getElementById('reportAllMembers'));
   </script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

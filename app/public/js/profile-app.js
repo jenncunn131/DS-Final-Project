@@ -20,6 +20,14 @@ var myApp = new Vue({
       state:'',
       zip:''
     },
+    certDetails:[],
+    certifications:[],
+    select:{
+      member:''
+    },
+    choose:{
+      certification:''
+    },
     membercerts: [{
 
     }
@@ -30,6 +38,7 @@ var myApp = new Vue({
   //created is the first thing browser recognizes when you launch application
   created(){
     this.fetchUser();
+    this.showTable();
 
 
   },
@@ -78,11 +87,11 @@ var myApp = new Vue({
       console.log("test123");
     },
     showTable(){
-      fetch('api/people/showtable.php?personID=' +activeUser.personID)
+      fetch('api/people/showtable.php')
       .then(response => response.json())
       .then(data => {
-        this.membercerts = data;
-        console.log(this.membercerts);
+        this.certDetails = data;
+        console.log(this.certDetails);
       });
     },
     editPerson(){

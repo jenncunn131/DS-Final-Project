@@ -5,6 +5,7 @@
 
 }
 
+
 body{
   background-color: #F5FFFA;
   color: #3A405A;
@@ -33,6 +34,13 @@ body{
   z-index:-100px;
 }
 
+select{
+  margin-bottom:0.5em;
+}
+
+.membercertTbl{
+  margin-top:3.0em;
+}
 .side-form {
   display:block;
 }
