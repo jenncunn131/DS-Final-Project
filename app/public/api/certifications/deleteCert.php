@@ -19,23 +19,23 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO Certifications (certificationName, defaultExpPeriod, certifyingAgency)
-  VALUES (?, ?, ?)'
+  'DELETE FROM Certifications WHERE certificationID = ?'
 );
+
 
 $stmt->execute([
   // $guid,
-  $_POST['certificationName'],
-  $_POST['defaultExpPeriod'],
-  $_POST['certifyingAgency'],
-
+  $_POST['certificationID']
 ]);
 
 // If needed, get auto-generated PK from DB
-$pk = $db->lastInsertId();  // https://www.php.net/manual/en/pdo.lastinsertid.php
-
+// $pk = $db->lastInsertId();  // https://www.php.net/manual/en/pdo.lastinsertid.php
+// $pk = $db->lastInsertId();
 // Step 4: Output
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../certifications/viewCert.php/?certificationID=' . $pk);
+
+// Redirects to the Get API in order to refresh the table without refreshing the page
+//uncommented this leads to additonal comments
+header('Location: ../certifications/viewCert.php/');

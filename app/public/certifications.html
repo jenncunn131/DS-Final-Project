@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="css/styles.css">
-
+  <link rel="icon" href="data:;base64,=">
   <title>OCFR - Home</title>
 </head>
 
@@ -52,13 +52,15 @@
           <thead>
             <tr>
               <th>Certification Name</th>
+              <th>Agency</th>
               <th>Standard Expiration Period</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr v-for="certification in certifications">
+            <tr v-for="certification in certifications" v-on:click="activeCert=certification">
               <td>{{certification.certificationName}}</td>
+              <td>{{certification.certifyingAgency}}</td>
               <td>{{certification.defaultExpPeriod}}</td>
             </tr>
             <!-- <tr>
@@ -94,7 +96,7 @@
           <div class="form-group row">
             <label for="inputAuthors" class="col-sm-3 col-form-label">Standard Expiration Period</label>
             <div class="col-sm-9">
-              <input v-model="newCert.defaultExpPeriod" id= "newCertExpPeriod" type="text" class="form-control">
+              <input v-model="newCert.defaultExpPeriod" id="newCertExpPeriod" type="number" class="form-control">
             </div>
           </div>
           <div class="form-group row">
@@ -106,7 +108,7 @@
 
           <div class="form-group row">
             <div class="col-sm-10 certSaveBtn">
-              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="submit" class="btn btn-primary">Add</button>
             </div>
           </div>
         </form>
@@ -115,28 +117,89 @@
     </div>
 
 
+    <form v-on:submit.prevent="editCert()" class="float-left" v-if="activeCert">
+      <h1>Edit a Certification</h1>
+      <div class="form-group row">
+        <label for="editCertName" class="col-sm-3 col-form-label">Certification Name</label>
+        <div class="col-sm-9">
+          <input id="editCertName" type="text" class="form-control" v-model="activeCert.certificationName">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="editAgency" class="col-sm-3 col-form-label">Certification Agency</label>
+        <div class="col-sm-9">
+          <input id="editAgency" type="text" v-model="activeCert.certifyingAgency" class="form-control">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="editExp" class="col-sm-3 col-form-label">Expiration Period</label>
+        <div class="col-sm-9">
+          <input id="editExp" v-model="activeCert.defaultExpPeriod" type="text" class="form-control">
+        </div>
+      </div>
 
-<!-- 3 buttons -->
-  <div class="row">
-    <div class="col-4">
-      <form v-on:submit.prevent="fetchUser">
-        <button type="submit" class="btn btn-primary" value="submit">Add New Certification</button>
-      </form>
-    </div>
-    <div class="col-4">
-      <form v-on:submit.prevent="fetchUser">
-        <button type="submit" class="btn btn-primary" value="submit">Edit Selected Certification</button>
-      </form>
-    </div>
-    <div class="col-4">
-      <form v-on:submit.prevent="fetchUser">
-        <button type="submit" class="btn btn-primary" value="submit">Delete Selected Certification</button>
-      </form>
-    </div>
-  </div>
+
+      <div class="form-group row">
+        <div class="col-sm-10 saveBtn">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </form>
+
+    <form v-on:submit.prevent="deleteCert()" class="float-left" v-if="activeCert">
+      <h1>Delete a Certification</h1>
+      <div class="form-group row">
+        <label for="deleteCertName" class="col-sm-3 col-form-label">Certification Name</label>
+        <div class="col-sm-9">
+          <input id="deleteCertName" type="text" class="form-control" v-model="activeCert.certificationName" readonly>
+        </div>
+      </div>
+
+      <div class="col-sm-10 deleteBtn">
+        <button type="submit" class="btn btn-primary">Delete Certification</button>
+      </div>
+    </form>
+
 
   <!-- Table with certifications for selected member -->
-  <h2>Members with this Certification</h2>
+  <div class="row">
+
+    <div class="side-first col-lg-12 col-md-12 col-sm-12 col-xs-12 vMemsTable">
+      <h1 class="reportEl">Members with Certifications</h1>
+
+      <!-- https://stackoverflow.com/questions/45906659/a-complex-condition-inside-v-if/45907070 -->
+      <div class="select">
+        <select v-model="select.mem">
+          <option value="">All Certifications</option>
+          <option v-for="cert in certifications">{{cert.certificationName}}</option>
+        </select>
+      </div>
+
+      <table id="certMembers" class="table-hover">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Certification</th>
+            <th>Expiration Date</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr v-for="cert in certDetails" v-if="select.mem=='' || select.mem == cert.certificationName">
+            <td>{{cert.fname}}</td>
+            <td>{{cert.lname}}</td>
+            <td>{{cert.certificationName}}</td>
+            <td>{{cert.expirationDate}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <!-- <h2>Members with this Certification</h2>
   <table id="bookTable" class="table-hover">
     <thead>
       <tr>
@@ -162,7 +225,7 @@
         <td>December 2021</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
 
 
   </div>

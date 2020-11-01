@@ -3,12 +3,18 @@ var myApp = new Vue({
   el: '#certProfile',
   //include all characteristics you want to see on the page under data and initialize elements here
   data: {
-    certifications: [{
-      certificationName:'',
-      defaultExpPeriod:'',
-      certifyingAgency:''
-
-    }],
+    // certifications: [{
+    //   certificationName:'',
+    //   defaultExpPeriod:'',
+    //   certifyingAgency:''
+    //
+    // }],
+    certifications:[],
+    activeCert:null,
+    select:{
+      mem:''
+    },
+    certDetails:[],
 
     newCert:{
       certificationName:'',
@@ -28,10 +34,19 @@ var myApp = new Vue({
   //created is the first thing browser recognizes when you launch application
   created(){
     this.fetchCertifications();
+    this.showCert();
 
   },
 
   methods: {
+    activeCertData(){
+      return{
+        certificationID:'',
+        certificationName:'',
+        certifyingAgency:'',
+        defaultExpPeriod:''
+      }
+    },
       // fetchUser: function(){
       fetchCertifications(){
       console.log("reaced here");
@@ -40,20 +55,55 @@ var myApp = new Vue({
       .then(data => {
         this.certifications = data;
         console.log(this.certifications);
-        // this.users = data.results[0];
-        // // var userData = data.results[0];
-        // // console.log(json);
-        // console.log("RECHDHER");
-        // console.log(this.users);
-        // this.userName = userData.name.first + " " + userData.name.last;
-        // this.userEmail = userData.email;
-        // this.userImgLarge = userData.picture.large;
-        // this.userImgThumb = userData.picture.thumbnail;
-        // this.userDob = userData.dob.date;
-        // this.userAge = userData.dob.age;
-        // this.userCountry = userData.location.country;
+
 
       });
+    },
+    showCert(){
+      fetch('api/certifications/showCert.php')
+      .then(response => response.json())
+      .then(data => {
+        this.certDetails = data;
+        console.log(this.certDetails);
+      });
+    },
+    editCert(){
+      fetch('api/certifications/editCert.php', {
+      method:'POST',
+      body: JSON.stringify(this.activeCert),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    })
+    .then( response => response.json() )
+    .then( json => {
+      console.log("Returned from post:", json);
+      // TODO: test a result was returned!
+      this.certifications.push(json[0]);
+      this.activeCert = this.activeCertData();
+    });
+
+    console.log("Creating (POSTing)...!");
+    console.log(this.activeCert);
+    },
+    deleteCert(){
+      fetch('api/certifications/deleteCert.php', {
+      method:'POST',
+      body: JSON.stringify(this.activeCert),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    })
+    .then( response => response.json() )
+    .then( json => {
+      console.log("Returned from post:", json);
+      // TODO: test a result was returned!
+      this.certifications=json;
+      this.activeCert = this.activeCertData();
+    });
+
+    console.log("Creating (POSTing)...!");
+    console.log(this.activeCert);
     },
     addCertification() {
      // evt.preventDefault();  // Redundant w/ Vue's submit.prevent
