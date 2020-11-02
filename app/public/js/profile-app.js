@@ -45,16 +45,16 @@ var myApp = new Vue({
 
 
   methods: {
-    // newUserData(){
-    //   return{
-    //     fname:'',
-    //     lname:'',
-    //     position:'',
-    //     radioNum:'',
-    //     stationNum:'',
-    //     email:''
-    //   }
-    // },
+    newUserData(){
+      return{
+        fname:'',
+        lname:'',
+        position:'',
+        radioNum:'',
+        stationNum:'',
+        email:''
+      }
+    },
       // fetchUser: function(){
 
     fetchUser(){
@@ -82,9 +82,6 @@ var myApp = new Vue({
           zip:'',
           personID:''
         }
-    },
-    test123(){
-      console.log("test123");
     },
     showTable(){
       fetch('api/people/showtable.php')

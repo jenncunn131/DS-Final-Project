@@ -156,15 +156,15 @@
       </div>
 
       <div class="col-sm-10 deleteBtn">
-        <button type="submit" class="btn btn-primary">Delete Certification</button>
+        <button onclick="deleteFunction()" type="submit" class="btn btn-primary">Delete Certification</button>
       </div>
     </form>
 
 
   <!-- Table with certifications for selected member -->
-  <div class="row">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-    <div class="side-first col-lg-12 col-md-12 col-sm-12 col-xs-12 vMemsTable">
+    <div class="side-first vMemsTable">
       <h1 class="reportEl">Members with Certifications</h1>
 
       <!-- https://stackoverflow.com/questions/45906659/a-complex-condition-inside-v-if/45907070 -->
@@ -237,6 +237,11 @@
   <script src="js/tablesort.min.js"></script>
   <script>
     new Tablesort(document.getElementById('bookTable'));
+  </script>
+  <script>
+    function deleteFunction() {
+      alert("You're about to delete a certification! Are you sure?");
+  }
   </script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
