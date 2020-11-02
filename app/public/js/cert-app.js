@@ -39,6 +39,13 @@ var myApp = new Vue({
   },
 
   methods: {
+    newCertData(){
+      return{
+        certificationName:'',
+        certifyingAgency:'',
+        defaultExpPeriod:''
+      }
+    },
     activeCertData(){
       return{
         certificationID:'',

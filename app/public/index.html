@@ -66,7 +66,7 @@
           </thead>
 
           <tbody>
-            <tr v-for="user in users" v-on:click="activeUser=user; test123();">
+            <tr v-for="user in users" v-on:click="activeUser=user">
               <td>{{user.fname}}</td>
               <td>{{user.lname}}</td>
               <td>{{user.position}}</td>
@@ -96,13 +96,13 @@
                 <div class="form-group row">
                   <label for="inputFname" class="col-sm-3 col-form-label">First Name</label>
                   <div class="col-sm-9">
-                    <input v-model="newUser.fname" id="inputFname" type="text" class="form-control" >
+                    <input v-model="newUser.fname" id="inputFname" type="text" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="inputLname" class="col-sm-3 col-form-label">Last Name</label>
                   <div class="col-sm-9">
-                    <input  v-model="newUser.lname" id="newUserLname"  type="text" class="form-control">
+                    <input v-model="newUser.lname" id="newUserLname"  type="text" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -120,27 +120,27 @@
                 <div class="form-group row">
                   <label for="inputStation" class="col-sm-3 col-form-label">Station Number</label>
                   <div class="col-sm-9">
-                    <input v-model="newUser.stationNum" id="newUserStationNum"  type="number" class="form-control">
+                    <input v-model="newUser.stationNum" id="newUserStationNum" type="number" class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
                   <div class="col-sm-9">
-                    <input v-model ="newUser.email" id="newUserEmail"  type="text" class="form-control">
+                    <input v-model="newUser.email" id="newUserEmail" type="text" class="form-control">
                   </div>
                 </div>
-
+                <!-- Credit for validation code: https://stackoverflow.com/questions/19445408/how-to-restrict-user-to-type-10-digit-numbers-in-input-element -->
                 <div class="form-group row">
                   <label for="inputPhone" class="col-sm-3 col-form-label">Mobile Phone</label>
                   <div class="col-sm-9">
-                    <input v-model="newUser.mobilePhone" id="newUserPhone"  type="number" class="form-control">
+                    <input v-model="newUser.mobilePhone" id="newUserPhone" type="tel" pattern="[0-9]{10}" oninvalid="this.setCustomValidity('Must enter a 10 digit phone number')" oninput="setCustomValidity('')" title="Must enter 10 digit phone number" class="form-control">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="inputStreet" class="col-sm-3 col-form-label">Street Address</label>
                   <div class="col-sm-9">
-                    <input v-model="newUser.street" id="newUserStreet"  type="text" class="form-control">
+                    <input v-model="newUser.street" id="newUserStreet" type="text" class="form-control">
                   </div>
                 </div>
 
@@ -239,7 +239,7 @@
             </div>
           </div>
           <div class="col-sm-10 deleteBtn">
-            <button type="submit" class="btn btn-primary">Delete Member</button>
+            <button onclick="deleteFunction()" type="submit" class="btn btn-primary">Delete Member</button>
           </div>
         </form>
 
@@ -337,14 +337,21 @@
 
   </div>
   <!-- ?extra div tag? -->
-  <!-- </div> -->
+  </div>
 
   <!-- TableSort from http://tristen.ca/tablesort/demo/ -->
+
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="js/profile-app.js"></script>
   <script src="js/tablesort.min.js"></script>
   <script type="application/javascript">
     new Tablesort(document.getElementById('memberTable'));
+  </script>
+  <!-- Credit for delete popup code: https://www.w3schools.com/js/tryit.asp?filename=tryjs_alert -->
+  <script>
+    function deleteFunction() {
+      alert("You're about to delete a member! Are you sure?");
+  }
   </script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
